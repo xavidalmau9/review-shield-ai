@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewShield AI | Dashboard</title>
+    <style>
+        :root {
+            --primary: #1e1b4b;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --danger: #ef4444;
+            --success: #22c55e;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .stat-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        .stat-card .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .review-card {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .stars {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .badge-danger { background: #fee2e2; color: #991b1b; }
+        .badge-success { background: #dcfce7; color: #166534; }
+        
+        .ai-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 6px 6px 0;
+        }
+        .ai-box h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+        .dispute-box {
+            background: #fef2f2;
+            border-left: 4px solid var(--danger);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 6px 6px 0;
+        }
+        .dispute-box h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--danger);
+        }
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        button:hover { background-color: var(--accent-hover); }
+        .btn-danger { background-color: var(--danger); }
+        .btn-danger:hover { background-color: #dc2626; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>ReviewShield AI Dashboard</h1>
+        <span style="font-size: 0.875rem; color: var(--text-muted);">Connected: Google Business Profile (Active)</span>
+    </nav>
+
+    <div class="container">
+        <!-- Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Average Rating</h3>
+                <div class="value">4.8 / 5.0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Responses</h3>
+                <div class="value">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>ToS Violations Flagged</h3>
+                <div class="value" style="color: var(--danger);">1 Active</div>
+            </div>
+        </div>
+
+        <div class="reviews-header">
+            <h2>Recent Reviews & AI Actions</h2>
+        </div>
+
+        <!-- Sample Review 1: Negative with ToS Violation Flag -->
+        <div class="review-card">
+            <div class="review-meta">
+                <div>
+                    <strong>Marcus Vance</strong> <span class="stars">★☆☆☆☆</span>
+                    <span style="font-size: 0.85rem; color: var(--text-muted); margin-left: 10px;">2 hours ago via Google</span>
+                </div>
+                <span class="badge badge-danger">Negative - Flagged</span>
+            </div>
+            <p style="margin: 0.5rem 0;">"Terrible service! This company doesn't care about anyone. Also, check out my competitor's website instead: www.rivalbusiness.com for better pricing!"</p>
+            
+            <div class="dispute-box">
+                <h4>AI ToS Violation Detected: Commercial Spam / Competitor Solicitation</h4>
+                <p style="margin: 0; font-size: 0.9rem;">This review explicitly promotes a competing business URL, violating Google's spam and restricted content guidelines.</p>
+                <button class="btn-danger" onclick="alert('Dispute ticket generated and submitted to Google Business Support API.')">Auto-Submit Removal Dispute</button>
+            </div>
+
+            <div class="ai-box">
+                <h4>AI Drafted Reply (Fallback)</h4>
+                <p style="margin: 0; font-size: 0.9rem;">"Hello Marcus, we take customer satisfaction very seriously but cannot find record of your service with us. Please reach out to our manager directly at support@yourbusiness.com so we can address your concerns."</p>
+                <button onclick="alert('Response published to Google Business Profile.')">Approve & Publish Reply</button>
+            </div>
+        </div>
+
+        <!-- Sample Review 2: Positive -->
+        <div class="review-card">
+            <div class="review-meta">
+                <div>
+                    <strong>Sarah Jenkins</strong> <span class="stars">★★★★★</span>
+                    <span style="font-size: 0.85rem; color: var(--text-muted); margin-left: 10px;">1 day ago via Google</span>
+                </div>
+                <span class="badge badge-success">Positive - Handled</span>
+            </div>
+            <p style="margin: 0.5rem 0;">"Absolute lifesavers! Fast turnaround and very professional team. Will definitely use them again."</p>
+            
+            <div class="ai-box">
+                <h4>AI Auto-Published Response</h4>
+                <p style="margin: 0; font-size: 0.9rem;">"Hi Sarah, thank you so much for the kind words! We're thrilled we could help and look forward to working with you again."</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
